@@ -2,7 +2,9 @@
 
 Daily, hormone-smart cards that mirror your mood and cycle.
 
-This project is an Expo + React Native experience designed for Galaxy (Android) and iPhone devices, currently targeting SDK 54. It helps users sync their daily rituals with their hormonal cycle and self-reported mood. Cards refresh automatically every day and can be adjusted to match personal cycle data.
+
+This project is an Expo + React Native experience designed for Galaxy (Android) and iPhone devices. It helps users sync their daily rituals with their hormonal cycle and self-reported mood. Cards refresh automatically every day and can be adjusted to match personal cycle data.
+
 
 ## Features
 

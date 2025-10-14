@@ -12,7 +12,7 @@ const DailyCard = memo(function DailyCard({ dateLabel, phase, mood }) {
   return (
     <View style={styles.card}>
       <Text style={styles.dateLabel}>{dateLabel}</Text>
-      <Text style={styles.phaseTitle}>{phase.name} phase</Text>
+      <Text style={styles.phaseTitle}>{phase.name} 단계</Text>
       <Text style={styles.hormone}>{phase.hormones}</Text>
 
       <View style={styles.keywordContainer}>
@@ -25,26 +25,24 @@ const DailyCard = memo(function DailyCard({ dateLabel, phase, mood }) {
 
       {mood ? (
         <View style={styles.moodBox}>
-          <Text style={styles.moodLabel}>Your chosen mood:</Text>
+          <Text style={styles.moodLabel}>오늘의 기분</Text>
           <Text style={styles.moodTitle}>{mood.title}</Text>
           <Text style={styles.moodAffirmation}>{mood.affirmation}</Text>
         </View>
       ) : (
-        <Text style={styles.moodPrompt}>
-          Select how you're feeling to tailor today's ritual.
-        </Text>
+        <Text style={styles.moodPrompt}>지금의 기분을 선택하면 맞춤 루틴을 만들 수 있어요.</Text>
       )}
 
       <Section
-        title="Body ritual"
+        title="몸을 위한 루틴"
         content={phase.suggestions.body}
       />
       <Section
-        title="Mind focus"
+        title="마음을 위한 포커스"
         content={phase.suggestions.mind}
       />
       <Section
-        title="Connection spark"
+        title="관계에 불어넣을 에너지"
         content={phase.suggestions.connection}
       />
     </View>
@@ -94,8 +92,6 @@ const styles = StyleSheet.create({
     color: "#5c4a8a",
     fontWeight: "600",
     fontSize: 12,
-    letterSpacing: 1,
-    textTransform: "uppercase",
   },
   moodBox: {
     backgroundColor: "#fff6fb",
@@ -106,8 +102,6 @@ const styles = StyleSheet.create({
   moodLabel: {
     color: "#a85ca5",
     fontSize: 12,
-    textTransform: "uppercase",
-    letterSpacing: 1,
     fontWeight: "600",
   },
   moodTitle: {

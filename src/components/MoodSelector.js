@@ -21,7 +21,7 @@ function MoodOption({ mood, onSelect, isActive }) {
 const MoodSelector = memo(function MoodSelector({ selected, onSelect }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>How are you arriving today?</Text>
+      <Text style={styles.heading}>오늘 당신의 기분은 어떤가요?</Text>
       <View style={styles.optionList}>
         {MOODS.map((mood) => (
           <MoodOption
@@ -75,9 +75,7 @@ const styles = StyleSheet.create({
     color: "#301d60",
   },
   optionTone: {
-    textTransform: "uppercase",
     fontSize: 12,
-    letterSpacing: 1,
     color: "#6f5f9c",
   },
 });

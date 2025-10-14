@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import dayjs from "dayjs";
 
 function formatDate(dateString) {
-  return dayjs(dateString).format("MMM D, YYYY");
+  return dayjs(dateString).format("YYYY년 M월 D일");
 }
 
 const CycleSettings = memo(function CycleSettings({ settings, onChange }) {
@@ -36,45 +36,44 @@ const CycleSettings = memo(function CycleSettings({ settings, onChange }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Tune your cycle rhythm</Text>
+      <Text style={styles.heading}>나의 주기 리듬 맞춤 설정</Text>
       <Text style={styles.description}>
-        We combine your hormone phase with your present mood to craft a daily ritual.
-        Update these numbers anytime.
+        호르몬 단계와 지금의 기분을 조합해 오늘의 루틴을 만들어요. 언제든지 정보를 수정할 수 있어요.
       </Text>
 
       <View style={styles.fieldRow}>
         <View style={styles.field}>
-          <Text style={styles.label}>Cycle length</Text>
+          <Text style={styles.label}>평균 주기 길이</Text>
           <TextInput
             keyboardType="number-pad"
             value={lengthDraft}
             onChangeText={setLengthDraft}
             style={styles.input}
             maxLength={2}
-            accessibilityLabel="Average cycle length in days"
+            accessibilityLabel="평균 주기 길이 (일)"
           />
-          <Text style={styles.hint}>Typical range is 20-40 days.</Text>
+          <Text style={styles.hint}>일반적인 범위는 20~40일이에요.</Text>
         </View>
         <View style={styles.field}>
-          <Text style={styles.label}>Last period day</Text>
+          <Text style={styles.label}>마지막 월경 시작일</Text>
           <TextInput
             value={dateDraft}
             onChangeText={setDateDraft}
             style={styles.input}
-            accessibilityLabel="First day of your last period"
-            placeholder="MMM D, YYYY"
+            accessibilityLabel="마지막 월경 시작일"
+            placeholder="YYYY년 M월 D일"
           />
           <Pressable onPress={setToToday} style={styles.inlineButton}>
-            <Text style={styles.inlineButtonText}>Set to today</Text>
+            <Text style={styles.inlineButtonText}>오늘 날짜로 설정</Text>
           </Pressable>
         </View>
       </View>
 
       <Pressable onPress={handleApply} style={styles.applyButton}>
-        <Text style={styles.applyButtonText}>Save rhythm</Text>
+        <Text style={styles.applyButtonText}>저장하기</Text>
       </Pressable>
 
-      <Text style={styles.snapshot}>Currently tracking from {lastStartLabel}</Text>
+      <Text style={styles.snapshot}>{lastStartLabel}부터 추적 중이에요</Text>
     </View>
   );
 });
@@ -106,8 +105,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "600",
     color: "#4d3a78",
-    textTransform: "uppercase",
-    letterSpacing: 1,
   },
   input: {
     borderWidth: 1,
@@ -134,8 +131,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "600",
     color: "#4f35a2",
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
   },
   applyButton: {
     backgroundColor: "#5d3bea",
@@ -152,14 +147,10 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "700",
-    letterSpacing: 1,
-    textTransform: "uppercase",
   },
   snapshot: {
     fontSize: 12,
     color: "#6c5b94",
-    textTransform: "uppercase",
-    letterSpacing: 1,
   },
 });
 

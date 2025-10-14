@@ -64,6 +64,7 @@ export default function App() {
 
   const todayKey = useMemo(() => dayjs().format("YYYY-MM-DD"), []);
   const profileName = profile?.name ?? "";
+  const profileBirthdate = profile?.birthdate ?? "";
 
   const selectedMood = useMemo(
     () => MOODS.find((item) => item.id === moodId) ?? null,
@@ -81,14 +82,21 @@ export default function App() {
     [cycleDay, profileName]
   );
 
+  const birthdateLabel = useMemo(() => {
+    if (!profileBirthdate) {
+      return null;
+    }
+    return dayjs(profileBirthdate).format("YYYY년 M월 D일생");
+  }, [profileBirthdate]);
+
   const luckyNumber = useMemo(
-    () => generateLuckyNumber(profileName, todayKey),
-    [profileName, todayKey]
+    () => generateLuckyNumber(`${profileName}-${profileBirthdate}`, todayKey),
+    [profileBirthdate, profileName, todayKey]
   );
 
   const luckyColor = useMemo(
-    () => generateLuckyColor(profileName, todayKey),
-    [profileName, todayKey]
+    () => generateLuckyColor(`${profileName}-${profileBirthdate}`, todayKey),
+    [profileBirthdate, profileName, todayKey]
   );
 
   const isLoading = loadingMood || loadingSettings;
@@ -125,6 +133,9 @@ export default function App() {
           <View style={styles.luckyHeader}>
             <Text style={styles.luckyTitle}>오늘의 행운 가이드</Text>
             <Text style={styles.luckyGreeting}>{profile.name}님을 위한 맞춤 메시지</Text>
+            {birthdateLabel ? (
+              <Text style={styles.luckyBirthdate}>생년월일 · {birthdateLabel}</Text>
+            ) : null}
           </View>
           <View style={styles.luckyContent}>
             <View style={styles.luckyNumberBox}>
@@ -209,6 +220,10 @@ const styles = StyleSheet.create({
   luckyGreeting: {
     fontSize: 13,
     color: "#6c5b94",
+  },
+  luckyBirthdate: {
+    fontSize: 12,
+    color: "#8a7ab2",
   },
   luckyContent: {
     flexDirection: "row",

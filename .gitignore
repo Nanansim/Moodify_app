@@ -1,24 +1,9 @@
-# dependencies
-node_modules/
-
-# builds
-build/
-dist/
-.out/
-.next/
-
-# logs & cache
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-.DS_Store
-.cache/
-coverage/
-
-# env
-.env*
-!.env.example
-
-# lockfiles are OK to commit
-# (keep package-lock.json / pnpm-lock.yaml / yarn.lock)
+* text=auto
+# 진짜 바이너리만 지정
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.woff binary
+*.woff2 binary

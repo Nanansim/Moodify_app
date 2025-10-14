@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# builds
+build/
+dist/
+.out/
+.next/
+
+# logs & cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+.cache/
+coverage/
+
+# env
+.env*
+!.env.example
+
+# lockfiles are OK to commit
+# (keep package-lock.json / pnpm-lock.yaml / yarn.lock)

@@ -10,11 +10,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffe6f1"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.nanansim.moodify",
+      "versionCode": 1,
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"

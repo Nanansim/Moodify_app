@@ -3,3 +3,4 @@
 # 진짜로 텍스트 diff가 의미 없는 폰트만 바이너리로
 *.woff  binary
 *.woff2 binary
+.expo/

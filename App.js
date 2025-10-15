@@ -47,7 +47,7 @@ function hashString(input) {
 function generateLuckyNumber(name, dateKey) {
   const seed = `${name}-${dateKey}`;
   const hash = hashString(seed);
-  return (hash % 99) + 1;
+  return (hash % 9) + 1;
 }
 
 function generateLuckyColor(name, dateKey) {

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Linking, Pressable, StyleSheet, Text, View } from "react-native";
 
 const Section = ({ title, content }) => (
   <View style={styles.section}>
@@ -7,6 +7,33 @@ const Section = ({ title, content }) => (
     <Text style={styles.sectionContent}>{content}</Text>
   </View>
 );
+
+const MusicRecommendation = ({ label, track }) => {
+  if (!track) {
+    return null;
+  }
+
+  const handlePress = () => {
+    if (track?.url) {
+      Linking.openURL(track.url);
+    }
+  };
+
+  return (
+    <Pressable
+      style={styles.musicItem}
+      onPress={handlePress}
+      accessibilityRole="link"
+      accessibilityLabel={`${label} · ${track.title} - ${track.artist}를 유튜브에서 재생`}
+    >
+      <Text style={styles.musicLabel}>{label}</Text>
+      <Text style={styles.musicTitle}>{track.title}</Text>
+      <Text style={styles.musicArtist}>{track.artist}</Text>
+      <Text style={styles.musicDescription}>{track.description}</Text>
+      <Text style={styles.musicLink}>YouTube에서 듣기</Text>
+    </Pressable>
+  );
+};
 
 const DailyCard = memo(function DailyCard({ dateLabel, phase, mood }) {
   return (
@@ -45,6 +72,21 @@ const DailyCard = memo(function DailyCard({ dateLabel, phase, mood }) {
         title="관계에 불어넣을 에너지"
         content={phase.suggestions.connection}
       />
+      <Section title="오늘의 포근한 한 끼" content={phase.suggestions.food} />
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>오늘의 사운드트랙</Text>
+        <View style={styles.musicGrid}>
+          <MusicRecommendation
+            label="해외 음악"
+            track={phase.suggestions.music.global}
+          />
+          <MusicRecommendation
+            label="한국 음악"
+            track={phase.suggestions.music.korean}
+          />
+        </View>
+      </View>
     </View>
   );
 });
@@ -129,6 +171,42 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#4f3f76",
     lineHeight: 21,
+  },
+  musicGrid: {
+    flexDirection: "column",
+    gap: 12,
+  },
+  musicItem: {
+    backgroundColor: "#f5f1ff",
+    borderRadius: 18,
+    padding: 16,
+    gap: 6,
+  },
+  musicLabel: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: "#6d5aa8",
+    textTransform: "uppercase",
+  },
+  musicTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#3b2f64",
+  },
+  musicArtist: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#5d4b86",
+  },
+  musicDescription: {
+    fontSize: 13,
+    color: "#675a8a",
+    lineHeight: 20,
+  },
+  musicLink: {
+    fontSize: 13,
+    color: "#6a4bff",
+    fontWeight: "600",
   },
 });
 
